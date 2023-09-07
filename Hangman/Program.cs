@@ -32,7 +32,9 @@ namespace ProjectHangman
             while (!isGameOver)
             {
                 Console.WriteLine("Guess a letter:");
-                string guessedLetter = Console.ReadLine().ToLower();
+                // Use Console.ReadKey() to get the next character pressed by the user
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                char guessedLetter = keyInfo.KeyChar;
                 if (guessedLetters.Contains(guessedLetter))
                 {
                     Console.WriteLine("You already guessed that letter!");
