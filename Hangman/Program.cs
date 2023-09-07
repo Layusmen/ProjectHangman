@@ -15,6 +15,10 @@ namespace ProjectHangman
             Random random = new Random();
             int secretWordIndex = random.Next(words.Count);
             string secretWord = words[secretWordIndex];
+
+            // Clear the console before each guess
+            Console.Clear();
+
             Console.WriteLine("I have picked a secret word from the list, can you try to guess the word?:");
             Console.WriteLine(words[secretWordIndex]);
             foreach (string word in words)
@@ -55,9 +59,13 @@ namespace ProjectHangman
                     {
                         isGameOver = true;
                         Console.WriteLine("You win!");
+                        // Add this line
+                        Console.WriteLine("Congratulations!");
                         break;
                     }
                 }
+                // Clear the console after each guess
+                Console.Clear();
                 Console.WriteLine("The secret word is: " + getSecretWord(secretWord, guessedLetters));
             }
 
