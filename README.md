@@ -3,7 +3,7 @@
 This project is a simple hangman game written in C#. The game randomly selects a word from a list of words and the player tries to guess the word by guessing letters. The player has 6 chances to guess the word correctly. If the player fails to guess the word in 6 guesses, they lose the game.
 How to play
 
-    Run the ProjectHangman.exe file.
+    Run the Hangman file.
     The game will randomly select a word from a list of words.
     The player will be presented with a blank line, representing the secret word.
     The player can guess a letter by typing the letter and pressing Enter.
@@ -16,10 +16,3 @@ How to play
 Requirements
 
     The game requires the .NET Framework 4.6.1 or higher to run.
-
-To-do list
-
-    Add more words to the list of words.
-    Improve the user interface.
-    Add a scoring system.
-    Add a multiplayer mode.
