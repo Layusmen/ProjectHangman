@@ -1,41 +1,34 @@
 ﻿using System;
+
 namespace ProjectHangman
 {
     class Program
     {
         static void Main(string[] args)
         {
-
             List<string> words = new List<string>();
-            words.Add("Standard");
-            words.Add("Approach");
-            words.Add("Wonder");
-            words.Add("Student");
+            words.Add("standard");
+            words.Add("approach");
+            words.Add("wonder");
+            words.Add("student");
             words.Add("catering");
-
             Random random = new Random();
             int secretWordIndex = random.Next(words.Count);
             string secretWord = words[secretWordIndex];
-
             Console.WriteLine("I have picked a secret word from the list, can you try to guess the word?:");
-
             Console.WriteLine(words[secretWordIndex]);
-
             foreach (string word in words)
             {
                 Console.WriteLine(word);
             }
             Console.WriteLine("Can you guess it?");
-
             bool isGameOver = false;
             int numberOfGuesses = 0;
             string guessedLetters = "";
-
             while (!isGameOver)
             {
                 Console.WriteLine("Guess a letter:");
-                string guessedLetter = Console.ReadLine();
-
+                string guessedLetter = Console.ReadLine().ToLower();
                 if (guessedLetters.Contains(guessedLetter))
                 {
                     Console.WriteLine("You already guessed that letter!");
@@ -43,10 +36,8 @@ namespace ProjectHangman
                 else
                 {
                     guessedLetters += guessedLetter;
-
-                    bool isLetterInWord = secretWord.Contains(guessedLetter);
-
-                    if (isLetterInWord)
+                    bool LetterInWord = secretWord.Contains(guessedLetter);
+                    if (LetterInWord)
                     {
                         Console.WriteLine("The letter " + guessedLetter + " is in the secret word!");
                     }
@@ -55,18 +46,38 @@ namespace ProjectHangman
                         Console.WriteLine("The letter " + guessedLetter + " is not in the secret word!");
                         numberOfGuesses++;
                     }
-
                     if (numberOfGuesses == 6)
                     {
                         isGameOver = true;
                         Console.WriteLine("You lose!");
                     }
+                    else if (guessedLetters.Contains(secretWord))
+                    {
+                        isGameOver = true;
+                        Console.WriteLine("You win!");
+                        break;
+                    }
                 }
-
+                Console.WriteLine("The secret word is: " + getSecretWord(secretWord, guessedLetters));
             }
 
+        }
 
-
+        static string getSecretWord(string secretWord, string guessedLetters)
+        {
+            string hiddenWord = "";
+            for (int i = 0; i < secretWord.Length; i++)
+            {
+                if (guessedLetters.Contains(secretWord[i]))
+                {
+                    hiddenWord += secretWord[i];
+                }
+                else
+                {
+                    hiddenWord += "_";
+                }
+            }
+            return hiddenWord;
         }
     }
 }
