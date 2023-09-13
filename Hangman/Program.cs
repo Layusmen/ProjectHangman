@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Metadata;
 
 namespace ProjectHangman
 {
@@ -6,12 +7,7 @@ namespace ProjectHangman
     {
         static void Main(string[] args)
         {
-            List<string> words = new List<string>();
-            words.Add("standard");
-            words.Add("approach");
-            words.Add("wonder");
-            words.Add("student");
-            words.Add("catering");
+            List<string> words = new List<string> {"standard", "approach", "wonder", "student", "catering" };
             Random random = new Random();
             int secretWordIndex = random.Next(words.Count);
             string secretWord = words[secretWordIndex];
