@@ -5,6 +5,8 @@ namespace ProjectHangman
 {
     class Program
     {
+
+        const int MAX_GUESS = 6;
         static void Main(string[] args)
         {
             List<string> words = new List<string> {"standard", "approach", "wonder", "student", "catering" };
@@ -48,7 +50,7 @@ namespace ProjectHangman
                         Console.WriteLine("The letter " + guessedLetter + " is not in the secret word!");
                         numberOfGuesses++;
                     }
-                    if (numberOfGuesses == 6)
+                    if (numberOfGuesses == MAX_GUESS)
                     {
                         isGameOver = true;
                         Console.WriteLine("You lose!");
