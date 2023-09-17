@@ -18,11 +18,13 @@ namespace ProjectHangman
             Console.Clear();
 
             Console.WriteLine("I have picked a secret word from the list, can you try to guess the word?:");
-            Console.WriteLine(words[secretWordIndex]);
+           
+            /*Console.WriteLine(words[secretWordIndex]);
             foreach (string word in words)
             {
                 Console.WriteLine(word);
-            }
+            }*/
+
             Console.WriteLine("Can you guess it?");
             bool isGameOver = false;
             int numberOfGuesses = 0;
