@@ -6,6 +6,7 @@ namespace NewProjectHangman
     class Program
     {
         const int MAX_GUESS = 6;
+        const char DASH = '_';
 
         static void Main(string[] args)
         {
@@ -19,7 +20,7 @@ namespace NewProjectHangman
             // Initialize the revealed word array with dashes.
             for (int i = 0; i < secretWord.Length; i++)
             {
-                revealedWord[i] = '-';
+                revealedWord[i] = DASH;
             }
 
             // Clear the console and display the welcome message.
