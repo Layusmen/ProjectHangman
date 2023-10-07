@@ -1,16 +1,13 @@
 ﻿using System;
-
-namespace NewProjectHangman
+namespace ProjectHangman
 {
     class Program
     {
         const int MAX_GUESS = 6;
         const char PLACEHOLDER = '_';
-
         static void Main(string[] args)
         {
             List<string> words = new List<string>() { "standard", "approach", "wonder", "student", "catering" };
-            int counter = 0;
             Random random = new Random();
             int secretWordChosen = random.Next(words.Count);
             string secretWord = words[secretWordChosen];
@@ -21,7 +18,6 @@ namespace NewProjectHangman
             {
                 revealedWord[i] = PLACEHOLDER;
             }
-
             // Clear the console and display the welcome message.
             Console.Clear();
             Console.WriteLine("Welcome to Hangman!");
@@ -29,7 +25,7 @@ namespace NewProjectHangman
 
             // Start the game loop.
             int guessLeft = MAX_GUESS; // Initialize guessLeft to the maximum number of guesses.
-            while (counter < MAX_GUESS)
+            while (guessLeft > 0)
             {
                 // Display the current state of the revealed word.
                 string guessedWord = new string(revealedWord);
@@ -50,28 +46,23 @@ namespace NewProjectHangman
                         isCorrectGuess = true;
                     }
                 }
-
-                // If the guess is incorrect, deduct from the player's total.
+                // If the guess is incorrect, decrement guessLeft.
                 if (!isCorrectGuess)
                 {
-                    counter++;
                     guessLeft--; // Decrement guessLeft for an incorrect guess.
                 }
-
                 // Check if the player has won or lost the game.
-                //if (new string(revealedWord) == secretWord)
-                if (!revealedWord.Contains (PLACEHOLDER))
+                if (!revealedWord.Contains(PLACEHOLDER))
                 {
                     Console.WriteLine($"\nYou win! The secret word was '{secretWord}'.");
                     break;
                 }
-                else if (counter == MAX_GUESS)
-                {
-                    Console.WriteLine($"\nYou lose! The secret word was '{secretWord}'.");
-                    break;
-                }
+            }
+            // If guessLeft reaches 0, the player has lost.
+            if (guessLeft == 0)
+            {
+                Console.WriteLine($"\nYou lose! The secret word was '{secretWord}'.");
             }
         }
     }
 }
-
