@@ -59,7 +59,8 @@ namespace NewProjectHangman
                 }
 
                 // Check if the player has won or lost the game.
-                if (new string(revealedWord) == secretWord)
+                //if (new string(revealedWord) == secretWord)
+                if (!revealedWord.Contains (PLACEHOLDER))
                 {
                     Console.WriteLine($"\nYou win! The secret word was '{secretWord}'.");
                     break;
